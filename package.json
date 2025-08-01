@@ -1,0 +1,27 @@
+{
+  "name": "pantheon-secrets",
+  "version": "1.0.0",
+  "description": "Pantheon Secrets for Node sites",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kporras07/pantheon-secrets-js.git"
+  },
+  "keywords": [
+    "pantheon",
+    "secrets"
+  ],
+  "author": "Pantheon Systems",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kporras07/pantheon-secrets-js/issues"
+  },
+  "homepage": "https://github.com/kporras07/pantheon-secrets-js#readme",
+  "devDependencies": {
+    "jest": "^30.0.5"
+  }
+}
