@@ -2,10 +2,13 @@
   "name": "pantheon-secrets",
   "version": "1.0.0",
   "description": "Pantheon Secrets for Node sites",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "build": "tsc",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -22,6 +25,10 @@
   },
   "homepage": "https://github.com/kporras07/pantheon-secrets-js#readme",
   "devDependencies": {
-    "jest": "^30.0.5"
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.2.0",
+    "jest": "^30.0.5",
+    "ts-jest": "^29.4.1",
+    "typescript": "^5.9.2"
   }
 }

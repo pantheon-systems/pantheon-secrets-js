@@ -1,8 +1,17 @@
 /**
  * @fileoverview A small utility package to retrieve secrets from Pantheon-style
  * environment variables based on the current application environment.
- * @author Gemini
+ * @author Pantheon-Systems
  */
+
+interface SecretDefinition {
+  value?: string | null;
+  type?: string;
+  envValues?: Record<string, string>;
+}
+
+type SecretsDefault = Record<string, SecretDefinition>;
+type SecretsProduction = Record<string, string>;
 
 /**
  * Retrieves a secret value based on a given secret name and the current application environment.
@@ -15,19 +24,19 @@
  * in that object, the corresponding value is returned.
  * b.  If no specific `envValues` match, the default `value` from the secret definition is returned.
  *
- * @param {string} secretName The name of the secret to retrieve.
- * @returns {string|null} The secret value as a string, or `null` if the secret is not found.
+ * @param secretName The name of the secret to retrieve.
+ * @returns The secret value as a string, or `null` if the secret is not found.
  */
-export function pantheonGetSecret(secretName) {
+export function pantheonGetSecret(secretName: string): string | null {
   // Get the current application environment from an environment variable.
-  const appEnv = process.env.APP_ENV;
+  const appEnv: string | undefined = process.env.APP_ENV;
 
   // Retrieve the raw JSON strings from environment variables.
-  const secretsDefaultRaw = process.env.SITE_SECRETS_DEFAULT;
-  const secretsProductionRaw = process.env.SITE_SECRETS_PRODUCTION;
+  const secretsDefaultRaw: string | undefined = process.env.SITE_SECRETS_DEFAULT;
+  const secretsProductionRaw: string | undefined = process.env.SITE_SECRETS_PRODUCTION;
 
-  let secretsDefault = {};
-  let secretsProduction = {};
+  let secretsDefault: SecretsDefault = {};
+  let secretsProduction: SecretsProduction = {};
 
   // Parse the JSON strings, handling potential errors.
   try {
@@ -52,16 +61,16 @@ export function pantheonGetSecret(secretName) {
   }
 
   // Fallback to default secrets.
-  const secretDefinition = secretsDefault[secretName];
+  const secretDefinition: SecretDefinition | undefined = secretsDefault[secretName];
   if (secretDefinition) {
     // Check for an environment-specific value within the default secrets.
-    if (secretDefinition.envValues && secretDefinition.envValues[appEnv] !== undefined) {
+    if (secretDefinition.envValues && appEnv && secretDefinition.envValues[appEnv] !== undefined) {
       console.log(`[pantheon-secrets] Found '${secretName}' with env-specific value for '${appEnv}'.`);
       return secretDefinition.envValues[appEnv];
     }
 
     // If no environment-specific value is found, return the default value.
-    if (secretDefinition.value !== undefined) {
+    if (secretDefinition.value !== undefined && secretDefinition.value !== null) {
       console.log(`[pantheon-secrets] Found '${secretName}' but no env-specific value. Returning default value.`);
       return secretDefinition.value;
     }

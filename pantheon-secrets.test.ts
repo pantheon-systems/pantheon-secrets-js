@@ -27,8 +27,7 @@ const mockSecretsDefault = {
 };
 
 const mockSecretsProduction = {
-  "HELLO": "valueLive",
-  "ANOTHER_LIVE_SECRET": "live-only-secret",
+  "HELLO": "valueLive"
 };
 
 // Use Jest's describe to group related tests.
