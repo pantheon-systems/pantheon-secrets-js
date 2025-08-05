@@ -1,5 +1,5 @@
 {
-  "name": "pantheon-secrets",
+  "name": "@pantheon-systems/pantheon-secrets",
   "version": "1.0.0",
   "description": "Pantheon Secrets for Node sites",
   "main": "dist/cjs/index.js",
