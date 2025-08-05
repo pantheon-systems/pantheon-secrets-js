@@ -1,6 +1,6 @@
 // Import the function to be tested.
 // Ensure the path is correct based on your project structure.
-import { pantheonGetSecret } from './index.js';
+import { pantheonGetSecret } from '../src/pantheon-secrets.js';
 
 // Define the mock environment variables used in the tests.
 const mockSecretsDefault = {

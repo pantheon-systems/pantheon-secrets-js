@@ -67,7 +67,9 @@ npm test       # Run test suite
 
 ### Project Structure
 
-- `index.ts` - Main TypeScript source
+- `src/pantheon-secrets.ts` - Main TypeScript source
+- `index.ts` - Entry point that exports from source
+- `__tests__/` - Test directory containing all test files
 - `dist/esm/` - ESM build output (ESNext)
 - `dist/cjs/` - CommonJS build output (ES2020)
 - TypeScript definitions included for both formats
