@@ -43,3 +43,4 @@ jobs:
       - uses: pantheon-systems/action-autotag@v1
         with:
           v-prefix: false
+          github_token: ${{ secrets.AUTOTAG_GH_TOKEN }}
