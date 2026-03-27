@@ -1,0 +1,10 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pantheon-secrets-js
+  description: JavaScript SDK for Pantheon Secrets API
+spec:
+  type: library
+  lifecycle: production
+  owner: developer-experience
