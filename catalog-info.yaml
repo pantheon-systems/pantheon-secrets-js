@@ -1,10 +1,13 @@
+# Managed by github-terraform — do not edit manually
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: pantheon-secrets-js
-  description: JavaScript SDK for Pantheon Secrets API
+  name: "pantheon-secrets-js"
+  description: "JavaScript SDK for Pantheon Secrets API"
+  annotations:
+    "backstage.io/techdocs-ref": "dir:docs/"
 spec:
-  type: library
-  lifecycle: production
-  owner: developer-experience
+  type: "library"
+  lifecycle: "production"
+  owner: "developer-experience"
