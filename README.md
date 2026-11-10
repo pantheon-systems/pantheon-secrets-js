@@ -73,3 +73,14 @@ npm test       # Run test suite
 - `dist/esm/` - ESM build output (ESNext)
 - `dist/cjs/` - CommonJS build output (ES2020)
 - TypeScript definitions included for both formats
+
+## Releasing
+
+Releases are cut by pushing a tag that matches `package.json`'s version; see [DEPLOYMENT.md](DEPLOYMENT.md).
+
+## Rollback
+
+- **When:** a published version breaks consumers.
+- **Recover:** move the npm `latest` dist-tag back to the last good version and deprecate the bad one, then publish a fix (never unpublish). Steps: [DEPLOYMENT.md#rollback](DEPLOYMENT.md#rollback).
+- **Verify:** `npm view @pantheon-systems/pantheon-secrets dist-tags.latest` shows the good version.
+- **Who:** `@pantheon-systems/developer-experience`, `#ask-hosting` (not paged).
